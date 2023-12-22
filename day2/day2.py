@@ -2,7 +2,7 @@ import re
 
 a = 'Game 1:3 red, 2 blue;1 green, 2 blue'
 def extract(a, reds, greens, blues):
-  match = re.search('Game (\d):(.*)', a)
+  match = re.search('Game (\d+):(.*)', a)
 
   id = match.group(1)
   counts = {}
@@ -15,6 +15,7 @@ def extract(a, reds, greens, blues):
   print(counts)
 
   if(counts['red'] <= reds and counts['green'] <= greens and counts['blue'] <= blues):
+    print(f'adding {id}')
     return int(id)
   else:
     return 0
